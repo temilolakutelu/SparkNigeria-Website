@@ -4582,6 +4582,14 @@ img.lazy-image.loaded {
     overflow: hidden;
 }
 
+.newsletter-section2 {
+    position: relative;
+    padding: 80px 0px 50px;
+    background: #520a0a;
+    color: #ffffff;
+    overflow: hidden;
+}
+
 .newsletter-section .auto-container {
     position: relative;
     max-width: 1340px;
@@ -5514,9 +5522,12 @@ img.lazy-image.loaded {
 .pricing-block .block-inner {
     position: relative;
     display: block;
+    background-color: #ffffff;
+    height: 780px;
     padding: 50px 20px 50px;
     text-align: center;
     border: 1px solid #e0e0e0;
+    border-radius: 10px;
     border-top: 3px solid #f0f0f0;
     box-shadow: 0px 0px 25px 0px rgba(0, 0, 0, 0.12);
     overflow: hidden;
@@ -5583,7 +5594,7 @@ img.lazy-image.loaded {
 }
 
 .pricing-block .plan-header .plan-title h2 {
-    font-size: 30px;
+    font-size: 36px;
     font-weight: 700;
     line-height: 1.25em;
     margin: 0px;
@@ -5647,6 +5658,7 @@ img.lazy-image.loaded {
     position: relative;
     line-height: 1.5em;
     margin-bottom: 12px;
+    font-weight: bold;
 }
 
 
@@ -6356,7 +6368,8 @@ img.lazy-image.loaded {
 }
 
 .footer-style-two {
-    background-color: #062128;
+    background-color: #0d112c;
+    /* background-color: #2b466e; */
 }
 
 .footer-style-three {
