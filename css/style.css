@@ -12402,6 +12402,7 @@ img.lazy-image.loaded {
     position: relative;
     display: block;
     width: 100%;
+    height: 275px;
 }
 
 .about-section-four .default-block .lower-box {
