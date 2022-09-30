@@ -14086,3 +14086,22 @@ img.lazy-image.loaded {
     font-style: italic;
     margin-bottom: 30px;
 }
+
+.sales_form div.card {
+    border: 0!important;
+}
+
+#earning_form,
+#earning_form .form-control {
+    border: 0!important;
+    box-shadow: 1px 2px 5px 4px #dee2e685;
+    border-radius: 5px;
+}
+
+#earning_form .form-control {
+    height: 50px;
+}
+
+#earning_form button {
+    height: 50px;
+}

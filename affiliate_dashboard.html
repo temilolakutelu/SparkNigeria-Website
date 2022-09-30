@@ -1,0 +1,204 @@
+<!doctype html>
+<html lang="en">
+
+<head>
+    <meta charset="utf-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta http-equiv="Content-Language" content="en">
+    <meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
+    <title>Spark - Affiliate Dashboard</title>
+    <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1, user-scalable=no, shrink-to-fit=no" />
+    <meta name="description" content="This is an example dashboard created using build-in elements and components.">
+    <meta name="msapplication-tap-highlight" content="no">
+    <link rel="icon" href="images/favicon.png" type="image/x-icon">
+    <link href="css/dashboard.css" rel="stylesheet">
+    <link href="css/bootstrap.css" rel="stylesheet">
+
+</head>
+
+<body>
+    <div class="app-container app-theme-white body-tabs-shadow  fixed-header">
+        <div class="app-header header-shadow d-flex justify-content-between ">
+            <div class="app-header__logo">
+                <div class="logo-src"></div>
+            </div>
+            <div class="mx-5 d-flex">
+                <div>
+                    <div class=" affiliate_name">
+
+                    </div>
+                    <div class=" affiliate_id">
+                        Affiliate ID:
+                    </div>
+                </div>
+                <div class="ml-4">
+                    <button class="btn btn-danger">Log Out</button>
+                </div>
+            </div>
+
+
+        </div>
+
+        <div class="app-main">
+
+            <div class="app-main__outer">
+                <div class="app-main__inner">
+                    <div class="app-page-title">
+                        <div class="page-title-wrapper">
+                            <div class="page-title-heading">
+
+                                <div class="affiliate_name"> Hi, </div>
+                            </div>
+
+                        </div>
+                    </div>
+
+
+                    <div class="row">
+                        <div class="col-md-6  ">
+                            <div class="card mb-3 widget-content">
+                                <div class="widget-content-outer">
+                                    <div class="widget-content-wrapper">
+                                        <div class="widget-content-left">
+                                            <div class="widget-heading">Total Sales</div>
+                                            <div class="widget-subheading">Total count of sales</div>
+                                        </div>
+                                        <div class="widget-content-right">
+                                            <div id="total_sales" class="widget-numbers text-success"> </div>
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                        <div class="col-md-6 ">
+                            <div class="card mb-3 widget-content">
+                                <div class="widget-content-outer">
+                                    <div class="widget-content-wrapper">
+                                        <div class="widget-content-left">
+                                            <div class="widget-heading">Total Earnings</div>
+                                            <div class="widget-subheading">Total sales earnings</div>
+                                        </div>
+                                        <div class="widget-content-right">
+                                            <div id="total_earnings" class="widget-numbers text-warning"> </div>
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+
+
+                    </div>
+                    <div class="row">
+                        <div class="col-md-12">
+                            <div class="main-card mb-3 card">
+                                <div class="card-header">Sales Report
+
+                                </div>
+                                <div class="table-responsive">
+                                    <table class="align-middle mb-0 table table-borderless table-striped table-hover">
+                                        <thead>
+                                            <tr>
+                                                <th class="text-center">#</th>
+                                                <th>Sales Type</th>
+                                                <th class="text-center">Duration</th>
+                                                <th class="text-center">Earnings</th>
+                                                <th class="text-center">Date</th>
+                                            </tr>
+                                        </thead>
+                                        <tbody>
+                                            <!-- <tr>
+                                                <td class="text-center text-muted">#345</td>
+                                                <td>John Doe</td>
+                                                <td class="text-center">One-off</td>
+                                                <td class="text-center">20,000</td>
+                                                <td class="text-center">12/05/2022
+                                                </td>
+                                            </tr> -->
+
+                                        </tbody>
+                                    </table>
+                                </div>
+
+                            </div>
+                        </div>
+                    </div>
+
+                </div>
+
+            </div>
+        </div>
+    </div>
+    <script src="js/jquery.js"></script>
+    <script src="js/popper.min.js"></script>
+    <script src="js/bootstrap.min.js"></script>
+    <script src="https://unpkg.com/axios/dist/axios.min.js"></script>
+    <script src="https://cdn.jsdelivr.net/npm/sweetalert2@10"></script>
+    <script type="text/javascript" src="js/dashboard.js"></script>
+    <script>
+        $('.app-container').hide()
+        if (localStorage.getItem('token') === null) {
+            Swal.fire({
+                title: 'Warning',
+                text: 'Login is required',
+                icon: 'warning'
+            }).then((result) => {
+                if (result.isConfirmed) {
+                    window.location.href = 'energy_exchange.html';
+                }
+            })
+
+        } else {
+            $('.app-container').show()
+        }
+        $(document).ready(function() {
+            let token = localStorage.getItem('token')
+            let affiliate = JSON.parse(localStorage.getItem('affiliate'))
+            $('.affiliate_name').append(affiliate.fullname)
+            $('.affiliate_id').append(affiliate.id)
+
+            getAffiliate();
+
+            function getAffiliate() {
+                let config = {
+                    headers: {
+                        'Authorization': 'Bearer ' + token
+                    }
+                }
+                axios.get(`https://sparknigeria.herokuapp.com/api/dashboard?affliateID=${affiliate.id}`, config)
+                    .then(function(response) {
+                        console.log(response);
+                        if (response.data.status) {
+                            let result = response.data
+                            $('#total_sales').append(result.total_sales)
+                            $('#total_earnings').append(result.total_earnings)
+                            result.data.forEach((i, ix) => {
+                                $('table tbody').append('<tr><td class="text-center text-muted">' + ix + 1 + ' </td>  <td>' + i.sale_type + '</td>  <td class="text-center">' + i.earning_duration + '</td><td class="text-center">' + i.sales_earnings + '</td> <td class="text-center">' + i.date_of_sale + ' </td> </tr>')
+                            })
+
+
+                        } else {
+                            Swal.fire({
+                                title: 'Error!',
+                                text: response.data.message,
+                                icon: 'error'
+                            })
+                        }
+
+
+
+
+                    })
+                    .catch(function(error) {
+                        console.log(error);
+                        Swal.fire({
+                            title: 'Error!',
+                            text: error.message,
+                            icon: 'error'
+                        })
+                    });
+            }
+        });
+    </script>
+</body>
+
+</html>
