@@ -180,7 +180,7 @@
 
                 <div class="content-box wow fadeInUp" data-wow-delay="0ms" data-wow-duration="2000ms">
                     <div class="default-form contact-form">
-                        <form method="post" action="contact.html">
+                        <form id="pitch_form" method="post">
                             <div class="row clearfix">
                                 <div class=" col-md-6 col-sm-12 form-group">
                                     <input type="text" name="firstname" placeholder="First Name">
@@ -190,11 +190,11 @@
                                 </div>
 
                                 <div class="col-lg-6 col-sm-12 form-group">
-                                    <input type="email" name="email" placeholder="Email">
+                                    <input type="email" name="emailaddress" placeholder="Email">
                                 </div>
 
                                 <div class="col-lg-6 col-md-12 col-sm-12 form-group">
-                                    <input type="text" name="phone" placeholder="Phone">
+                                    <input type="text" name="phonenumber" placeholder="Phone">
                                 </div>
                                 <div class="col-lg-6 col-sm-12 form-group">
                                     <input type="text" name="city" placeholder="City in which the project is located *">
@@ -361,7 +361,84 @@
     <script src="js/paroller.js"></script>
     <script src="js/element-in-view.js"></script>
     <script src="js/custom-script.js"></script>
+    <script src="https://unpkg.com/axios/dist/axios.min.js"></script>
+    <script src="https://cdn.jsdelivr.net/npm/sweetalert2@10"></script>
+    <script src="https://www.google.com/recaptcha/api.js?render=6LcLOlMiAAAAANvxCU24fYZ7K2tWOMMpztXN_oW5"></script>
+    <script>
+        $(document).ready(function() {
 
+
+
+            $('#pitch_form').submit((e) => {
+                e.preventDefault();
+                grecaptcha.ready(function() {
+                    grecaptcha.execute('6LcLOlMiAAAAANvxCU24fYZ7K2tWOMMpztXN_oW5', {
+                        action: 'submit'
+                    }).then(function(token) {
+                        // Add your logic to submit to your backend server here.
+                        var loading_html =
+                            '<div style="height:150px;width:150px;margin: 0 auto;"><img style="width: 100%;" src="https://skiracing.com.au/wp-content/plugins/NeoGallery26-09-2018-340/img/ajax-loader.gif" /></div>';
+                        Swal.fire({
+                            html: loading_html,
+                            showConfirmButton: false,
+                            showCancelButton: false
+                        })
+
+                        var data = new FormData();
+
+                        data.append('firstname', $('input[name="firstname"]').val())
+                        data.append('lastname', $('select[name="lastname"]').val())
+                        data.append('emailaddress', $('input[name="email"]').val())
+                        data.append('phonenumber', $('input[name="phone"]').val())
+                        data.append('city', $('input[name="city"]').val())
+                        data.append('no_of_users', $('input[name="range"]').val())
+                        data.append('load_capacity', $('input[name="capacity"]').val())
+                        data.append('extra_details', $('input[name="extra"]').val())
+                        handleSubmit(data)
+                    });
+                });
+            })
+
+
+            function handleSubmit(data) {
+                // for (let i of data.entries()) {
+                //     console.log(i[0] + '  =>  ' + i[1])
+                // }
+                axios.post('https://sparknigeria.herokuapp.com/api/pitchproject/', data)
+                    .then(function(response) {
+                        if (response.data.status) {
+                            Swal.fire({
+                                title: 'Success!',
+                                text: response.data.message + ' We will get back to you shortly',
+                                icon: 'success'
+                            }).then((result) => {
+                                if (result.isConfirmed) {
+                                    location.reload()
+                                }
+                            })
+                        } else {
+                            Swal.fire({
+                                title: 'Error!',
+                                text: response.data.message,
+                                icon: 'error'
+                            })
+                        }
+
+
+
+
+                    })
+                    .catch(function(error) {
+                        console.log(error);
+                        Swal.fire({
+                            title: 'Error!',
+                            text: error.message,
+                            icon: 'error'
+                        })
+                    });
+            }
+        })
+    </script>
 </body>
 
 </html>

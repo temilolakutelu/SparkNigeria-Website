@@ -173,84 +173,115 @@
     //submit affiliate form
     $('#affiliate-form').submit((e) => {
         e.preventDefault();
-        var loading_html =
-            '<div style="height:150px;width:150px;margin: 0 auto;"><img style="width: 100%;" src="https://skiracing.com.au/wp-content/plugins/NeoGallery26-09-2018-340/img/ajax-loader.gif" /></div>';
-        Swal.fire({
-            html: loading_html,
-            showConfirmButton: false,
-            showCancelButton: false
-        })
+        grecaptcha.ready(function() {
+            grecaptcha.execute('6LcLOlMiAAAAANvxCU24fYZ7K2tWOMMpztXN_oW5', {
+                action: 'submit'
+            }).then(function(token) {
+                // Add your logic to submit to your backend server here.
+                var loading_html =
+                    '<div style="height:150px;width:150px;margin: 0 auto;"><img style="width: 100%;" src="https://skiracing.com.au/wp-content/plugins/NeoGallery26-09-2018-340/img/ajax-loader.gif" /></div>';
+                Swal.fire({
+                    html: loading_html,
+                    showConfirmButton: false,
+                    showCancelButton: false
+                })
 
-        var data = new FormData();
+                var data = new FormData();
 
-        data.append('fullname', $('input[name="fullname"]').val())
-        data.append('phonenumber', $('input[name="phonenumber"]').val())
-        data.append('emailaddress', $('input[name="emailaddress"]').val())
-        data.append('address', $('input[name="address"]').val())
-        data.append('fullname_kin', $('input[name="fullname_kin"]').val())
-        data.append('phonenumber_kin', $('input[name="phonenumber_kin"]').val())
-        data.append('password', $('input[name="password"]').val())
+                data.append('fullname', $('input[name="fullname"]').val())
+                data.append('phonenumber', $('input[name="phonenumber"]').val())
+                data.append('emailaddress', $('input[name="emailaddress"]').val())
+                data.append('address', $('input[name="address"]').val())
+                data.append('fullname_kin', $('input[name="fullname_kin"]').val())
+                data.append('phonenumber_kin', $('input[name="phonenumber_kin"]').val())
+                data.append('password', $('input[name="password"]').val())
 
-        createAffiliate(data)
+                createAffiliate(data)
+            })
+        });
     })
+
 
     //submit sponsor form
     $('#sponsor-form').submit((e) => {
         e.preventDefault();
-        var loading_html =
-            '<div style="height:150px;width:150px;margin: 0 auto;"><img style="width: 100%;" src="https://skiracing.com.au/wp-content/plugins/NeoGallery26-09-2018-340/img/ajax-loader.gif" /></div>';
-        Swal.fire({
-            html: loading_html,
-            showConfirmButton: false,
-            showCancelButton: false
-        })
+        grecaptcha.ready(function() {
+            grecaptcha.execute('6LcLOlMiAAAAANvxCU24fYZ7K2tWOMMpztXN_oW5', {
+                action: 'submit'
+            }).then(function(token) {
+                // Add your logic to submit to your backend server here.
+                var loading_html =
+                    '<div style="height:150px;width:150px;margin: 0 auto;"><img style="width: 100%;" src="https://skiracing.com.au/wp-content/plugins/NeoGallery26-09-2018-340/img/ajax-loader.gif" /></div>';
+                Swal.fire({
+                    html: loading_html,
+                    showConfirmButton: false,
+                    showCancelButton: false
+                })
 
-        var data = new FormData();
+                var data = new FormData();
 
-        data.append('firstname', $('input[name="firstname"]').val())
-        data.append('lastname', $('input[name="lastname"]').val())
-        data.append('phonenumber', $('input[name="sponsorphone"]').val())
-        data.append('emailaddress', $('input[name="sponsoremail"]').val())
-        data.append('address', $('input[name="sponsoraddress"]').val())
-        data.append('companyname', $('input[name="company"]').val())
-        data.append('country', $('select[name="country"]').val())
-        data.append('password', $('input[name="password2"]').val())
+                data.append('firstname', $('input[name="firstname"]').val())
+                data.append('lastname', $('input[name="lastname"]').val())
+                data.append('phonenumber', $('input[name="sponsorphone"]').val())
+                data.append('emailaddress', $('input[name="sponsoremail"]').val())
+                data.append('address', $('input[name="sponsoraddress"]').val())
+                data.append('companyname', $('input[name="company"]').val())
+                data.append('country', $('select[name="country"]').val())
+                data.append('password', $('input[name="password2"]').val())
 
-        createSponsor(data)
+                createSponsor(data)
+            })
+        });
     })
+
     $('#loginform1').submit((e) => {
         e.preventDefault();
-        var loading_html =
-            '<div style="height:150px;width:150px;margin: 0 auto;"><img style="width: 100%;" src="https://skiracing.com.au/wp-content/plugins/NeoGallery26-09-2018-340/img/ajax-loader.gif" /></div>';
-        Swal.fire({
-            html: loading_html,
-            showConfirmButton: false,
-            showCancelButton: false
-        })
+        grecaptcha.ready(function() {
+            grecaptcha.execute('6LcLOlMiAAAAANvxCU24fYZ7K2tWOMMpztXN_oW5', {
+                action: 'submit'
+            }).then(function(token) {
+                // Add your logic to submit to your backend server here.
+                var loading_html =
+                    '<div style="height:150px;width:150px;margin: 0 auto;"><img style="width: 100%;" src="https://skiracing.com.au/wp-content/plugins/NeoGallery26-09-2018-340/img/ajax-loader.gif" /></div>';
+                Swal.fire({
+                    html: loading_html,
+                    showConfirmButton: false,
+                    showCancelButton: false
+                })
 
-        var data = new FormData();
+                var data = new FormData();
 
-        data.append('username', $('input[name="affiliateusername"]').val())
-        data.append('password', $('input[name="affiliatepassword"]').val())
+                data.append('username', $('input[name="affiliateusername"]').val())
+                data.append('password', $('input[name="affiliatepassword"]').val())
 
-        handleLogin('affiliate', data)
+                handleLogin('affiliate', data)
+            })
+        });
     })
+
     $('#loginform2').submit((e) => {
         e.preventDefault();
-        var loading_html =
-            '<div style="height:150px;width:150px;margin: 0 auto;"><img style="width: 100%;" src="https://skiracing.com.au/wp-content/plugins/NeoGallery26-09-2018-340/img/ajax-loader.gif" /></div>';
-        Swal.fire({
-            html: loading_html,
-            showConfirmButton: false,
-            showCancelButton: false
-        })
+        grecaptcha.ready(function() {
+            grecaptcha.execute('6LcLOlMiAAAAANvxCU24fYZ7K2tWOMMpztXN_oW5', {
+                action: 'submit'
+            }).then(function(token) {
+                // Add your logic to submit to your backend server here.
+                var loading_html =
+                    '<div style="height:150px;width:150px;margin: 0 auto;"><img style="width: 100%;" src="https://skiracing.com.au/wp-content/plugins/NeoGallery26-09-2018-340/img/ajax-loader.gif" /></div>';
+                Swal.fire({
+                    html: loading_html,
+                    showConfirmButton: false,
+                    showCancelButton: false
+                })
 
-        var data = new FormData();
+                var data = new FormData();
 
-        data.append('username', $('input[name="sponsorusername"]').val())
-        data.append('password', $('input[name="sponsorpassword"]').val())
+                data.append('username', $('input[name="sponsorusername"]').val())
+                data.append('password', $('input[name="sponsorpassword"]').val())
 
-        handleLogin('sponsor', data)
+                handleLogin('sponsor', data)
+            })
+        });
     })
 
 

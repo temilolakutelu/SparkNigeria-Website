@@ -334,34 +334,42 @@
     <script src="js/custom-script.js"></script>
     <script src="https://unpkg.com/axios/dist/axios.min.js"></script>
     <script src="https://cdn.jsdelivr.net/npm/sweetalert2@10"></script>
+    <script src="https://www.google.com/recaptcha/api.js?render=6LcLOlMiAAAAANvxCU24fYZ7K2tWOMMpztXN_oW5"></script>
+
     <script>
         $(document).ready(function() {
             getAffiliates()
             $('#earning_form').submit((e) => {
                 e.preventDefault();
-                var loading_html =
-                    '<div style="height:150px;width:150px;margin: 0 auto;"><img style="width: 100%;" src="https://skiracing.com.au/wp-content/plugins/NeoGallery26-09-2018-340/img/ajax-loader.gif" /></div>';
-                Swal.fire({
-                    html: loading_html,
-                    showConfirmButton: false,
-                    showCancelButton: false
-                })
+                grecaptcha.ready(function() {
+                    grecaptcha.execute('6LcLOlMiAAAAANvxCU24fYZ7K2tWOMMpztXN_oW5', {
+                        action: 'submit'
+                    }).then(function(token) {
+                        // Add your logic to submit to your backend server here.
+                        var loading_html =
+                            '<div style="height:150px;width:150px;margin: 0 auto;"><img style="width: 100%;" src="https://skiracing.com.au/wp-content/plugins/NeoGallery26-09-2018-340/img/ajax-loader.gif" /></div>';
+                        Swal.fire({
+                            html: loading_html,
+                            showConfirmButton: false,
+                            showCancelButton: false
+                        })
 
-                var data = new FormData();
+                        var data = new FormData();
 
-                data.append('date_of_sale', $('input[name="date_of_sale"]').val())
-                data.append('sale_type', $('select[name="sale_type"]').val())
-                data.append('sale_earnings', $('input[name="sale_earnings"]').val())
-                data.append('earning_duration', $('select[name="earning_duration"]').val())
-                data.append('affliateID', $('select[name="affiliateID"]').val())
+                        data.append('date_of_sale', $('input[name="date_of_sale"]').val())
+                        data.append('sale_type', $('select[name="sale_type"]').val())
+                        data.append('sale_earnings', $('input[name="sale_earnings"]').val())
+                        data.append('earning_duration', $('select[name="earning_duration"]').val())
+                        data.append('affliateID', $('select[name="affiliateID"]').val())
 
-                createRecord(data)
+                        createRecord(data)
+                    })
+                });
             })
-
 
             function getAffiliates() {
 
-                axios.get(`    https://sparknigeria.herokuapp.com/api/affliates`)
+                axios.get(`https://sparknigeria.herokuapp.com/api/affliates`)
                     .then(function(response) {
                         if (response.data.status) {
                             let affiliates = response.data.data
