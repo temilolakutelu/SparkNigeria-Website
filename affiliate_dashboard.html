@@ -32,7 +32,7 @@
                     </div>
                 </div>
                 <div class="ml-4">
-                    <button class="btn btn-danger">Log Out</button>
+                    <button id="logout" class="btn btn-danger">Log Out</button>
                 </div>
             </div>
 
@@ -157,6 +157,10 @@
             $('.affiliate_id').append(affiliate.id)
 
             getAffiliate();
+
+            $('#logout').click(e => {
+                window.location.href('/index.html')
+            })
 
             function getAffiliate() {
                 let config = {

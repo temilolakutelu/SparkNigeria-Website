@@ -1,0 +1,196 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="utf-8">
+    <title>Affiliate - Reset Password</title>
+
+    <meta property="og:site_name" content="Spark Nigeria" />
+    <!-- Stylesheets -->
+    <link href="css/bootstrap.css" rel="stylesheet">
+    <link href="css/style.css" rel="stylesheet">
+    <!-- Color File -->
+    <link href="css/color.css" rel="stylesheet">
+    <!-- Responsive File -->
+    <link href="css/responsive.css" rel="stylesheet">
+
+    <link rel="shortcut icon" href="images/favicon.png" type="image/x-icon">
+    <link rel="icon" href="images/favicon.png" type="image/x-icon">
+
+    <!-- Responsive Settings -->
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=0">
+    <style>
+        /* The message box is shown when the user clicks on the password field */
+        
+        #message {
+            display: none;
+            background: #f1f1f1;
+            color: #000;
+            position: relative;
+            padding: 15px;
+            margin-top: 5px;
+        }
+        
+        #message p {
+            padding: 10px;
+            font-size: 13px;
+        }
+        /* Add a green text color and a checkmark when the requirements are right */
+        
+        .valid {
+            color: green;
+        }
+        
+        .valid:before {
+            position: relative;
+            left: -10px;
+            content: "✔";
+        }
+        /* Add a red text color and an "x" when the requirements are wrong */
+        
+        .invalid {
+            color: red;
+        }
+        
+        .invalid:before {
+            position: relative;
+            left: -10px;
+            content: "✖";
+        }
+        
+        .toggler {
+            position: absolute;
+            right: 25px;
+            bottom: 8px;
+            cursor: pointer;
+        }
+    </style>
+</head>
+
+<body>
+
+    <div class="page-wrapper">
+        <!-- Preloader -->
+        <div class="preloader">
+            <div class="icon"></div>
+        </div>
+        <!-- Main Header -->
+        <header class="main-header header-style-four">
+
+            <!-- Header Upper -->
+            <div class="header-main-box">
+                <div class="header-upper">
+                    <div class="auto-container">
+                        <div class="inner clearfix">
+                            <!--Logo-->
+                            <div class="logo-box">
+                                <div class="logo">
+                                    <a href="index.html" title="Sparknigeria HTML Template"><img src="images/logo.png" alt="Spark Nigeria" title="Sparknigeria"></a>
+                                </div>
+                            </div>
+
+
+
+                        </div>
+
+                    </div>
+                </div>
+            </div>
+            <!--End Header Upper-->
+
+
+        </header>
+        <!-- End Main Header -->
+
+
+
+
+        <!-- Page Banner Section -->
+        <section class="page-banner">
+            <div class="image-layer" style="background-image: url(images/background/banner-bg-5.jpg);"></div>
+
+            <div class="auto-container">
+
+
+                <h1>Affiliate Password Reset</h1>
+            </div>
+
+        </section>
+        <!--End Page Banner Section -->
+
+
+        <!--Enquiry Section-->
+        <section class="my-5">
+            <div class="auto-container">
+
+
+                <div class="content-box wow fadeInUp" data-wow-delay="0ms" data-wow-duration="2000ms">
+                    <div class="default-form contact-form">
+                        <form id="resetform" method="post">
+                            <div class="row clearfix">
+                                <div class="col form-group col-sm-12">
+                                    <div style="position: relative;">
+                                        <label for="id" style="margin-bottom: -10px;">User ID</label>
+                                        <input id="userid" disabled type="text" name="token" class="form-control" style="cursor: not-allowed;background-color: lightgray;" />
+                                    </div>
+
+                                </div>
+                                <div class="col form-group col-sm-6">
+                                    <div style="position: relative;">
+                                        <label for="password" style="margin-bottom: -10px;">Enter Password </label>
+                                        <br><small class="text-danger" style="font-size: 10px;"> * Must contain at least one uppercase and at least 8 or more characters </small>
+                                        <input id="psw" type="password" name="password" class="form-control" pattern="(?=.*[A-Z]).{8,}" title="Must contain at least one uppercase and at least 8 or more characters"> <i id="togglePassword" class="toggler fa fa-eye"></i>
+                                    </div>
+                                    <div id="message">
+                                        <p id="capital" class="invalid mb-0">A <b>capital (uppercase)</b> letter</p>
+                                        <p id="length" class="invalid mb-0">Minimum <b>8 characters</b></p>
+                                    </div>
+                                </div>
+                                <div class="col form-group col-sm-6">
+                                    <div style="position: relative;">
+                                        <label for="cpassword">Confirm Password</label>
+                                        <input id="cpsw" type="password" name="cpassword" class="form-control mt-3">
+                                        <i id="togglePassword2" class="toggler fa fa-eye"></i>
+                                    </div>
+                                    <div id="message2">
+                                        <p id="confirm" class="invalid mb-0">Passwords did not match</p>
+                                    </div>
+                                </div>
+
+                                <div class="col-md-12 col-sm-12 form-group">
+                                    <button type="submit" class="theme-btn btn-style-one"><span class="btn-title"><span class="btn-txt">Submit</span><span class="btn-icon"><span class="icon flaticon-arrows-11"></span> </span></span></button>
+                                </div>
+                            </div>
+                        </form>
+                    </div>
+
+
+                </div>
+
+            </div>
+        </section>
+
+    </div>
+    <!--End pagewrapper-->
+
+    <script src="js/jquery.js"></script>
+    <script src="js/popper.min.js"></script>
+    <script src="js/bootstrap.min.js"></script>
+    <script src="js/jquery-ui.js"></script>
+    <script src="js/jquery.fancybox.js"></script>
+    <script src="js/owl.js"></script>
+    <script src="js/appear.js"></script>
+    <script src="js/wow.js"></script>
+    <script src="js/scrollbar.js"></script>
+    <script src="js/validate.js"></script>
+    <script src="js/paroller.js"></script>
+    <script src="js/element-in-view.js"></script>
+    <script src="js/custom-script.js"></script>
+    <script src="https://unpkg.com/axios/dist/axios.min.js"></script>
+    <script src="https://cdn.jsdelivr.net/npm/sweetalert2@10"></script>
+    <script src="js/reset_script.js"></script>
+
+</body>
+
+</html>

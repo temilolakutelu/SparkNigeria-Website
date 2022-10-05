@@ -900,21 +900,34 @@
                         </div>
                         <div class="sections">
                             <div class="tabcontent logintabcontent logintabcontent1 active">
-                                <h2>Affiliate Login</h2>
+
                                 <form id="loginform1">
+                                    <h2>Affiliate Login</h2>
                                     <div class="form-group">
                                         <label for="name">Email Address</label>
-                                        <input type="text" name="affiliateusername" class="form-control">
+                                        <input type="email" name="affiliateusername" class="form-control">
                                     </div>
                                     <div class="form-group">
                                         <label for="password">Password</label>
                                         <input type="password" name="affiliatepassword" class="form-control">
+                                    </div>
+                                    <a id="forgotbtn1" class="float-right" href="javascript:void(0);">Forgot Password</a>
+                                    <div class="form-group">
+                                        <button type="submit" class="btn btn-success">Submit</button>
+                                    </div>
+                                </form>
+                                <form id="forgotform1">
+                                    <h2>Affiliate Forgot Password</h2>
+                                    <div class="form-group">
+                                        <label for="name">Email Address</label>
+                                        <input type="email" name="email" class="form-control">
                                     </div>
 
                                     <div class="form-group">
                                         <button type="submit" class="btn btn-success">Submit</button>
                                     </div>
                                 </form>
+
                             </div>
                             <div class="tabcontent logintabcontent logintabcontent2">
                                 <h2>Sponsor Login</h2>
@@ -926,6 +939,17 @@
                                     <div class="form-group">
                                         <label for="password">Password</label>
                                         <input type="password" name="sponsorpassword" class="form-control">
+                                    </div>
+                                    <a id="forgotbtn2" class="float-right" href="javascript:void(0);">Forgot Password</a>
+                                    <div class="form-group">
+                                        <button type="submit" class="btn btn-success">Submit</button>
+                                    </div>
+                                </form>
+                                <form id="forgotform2">
+                                    <h2>Sponsor Forgot Password</h2>
+                                    <div class="form-group">
+                                        <label for="name">Email Address</label>
+                                        <input type="email" name="email" class="form-control">
                                     </div>
 
                                     <div class="form-group">

@@ -1,10 +1,11 @@
 (function($) {
-
     "use strict";
     const buttons = document.querySelectorAll(".signup-btn");
     const sections = document.querySelectorAll(".signuptabcontent");
     const buttons2 = document.querySelectorAll(".login-btn");
     const sections2 = document.querySelectorAll(".logintabcontent");
+    $('#forgotform1').hide()
+    $('#forgotform2').hide()
     $('#message2').hide()
     $('#message4').hide()
 
@@ -46,6 +47,7 @@
 
     // When the user clicks on the password field, show the message box
     myInput.onfocus = function() {
+        console.log(focus)
         document.getElementById("message").style.display = "block";
     }
     myInput2.onfocus = function() {
@@ -283,11 +285,88 @@
             })
         });
     })
+    $('#forgotbtn1').click(e => {
+        e.preventDefault()
+        $('#loginform1').hide()
+        $('#forgotform1').show();
+
+    })
+    $('#forgotform1').submit((e) => {
+        e.preventDefault()
+        var data = new FormData();
+        data.append('emailaddress', $('input[name="affiliateforgotemail"]').val())
+        axios.post('https://sparknigeria.herokuapp.com/api/affliaterecoverymail/', data)
+            .then(function(response) {
+                if (response.data.status) {
+                    Swal.fire({
+                        title: 'Success!',
+                        text: response.data.message,
+                        icon: 'success'
+                    }).then((result) => {
+                        if (result.isConfirmed) {
+                            window.location.href = "energy_exchange.html";
+                        }
+                    })
+                } else {
+                    Swal.fire({
+                        title: 'Error!',
+                        text: response.data.message,
+                        icon: 'error'
+                    })
+                }
 
 
+            })
+            .catch(function(error) {
+                console.log(error);
+                Swal.fire({
+                    title: 'Error!',
+                    text: error.message,
+                    icon: 'error'
+                })
+            });
+    })
+    $('#forgotbtn2').click(e => {
+        e.preventDefault()
+        $('#loginform2').hide()
+        $('#forgotform2').show();
+
+    })
+    $('#forgotform2').submit((e) => {
+        e.preventDefault()
+        var data = new FormData();
+        data.append('emailaddress', $('input[name="sponsorforgotemail"]').val())
+        axios.post('https://sparknigeria.herokuapp.com/api/businessinvestorrecoverymail/', data)
+            .then(function(response) {
+                if (response.data.status) {
+                    Swal.fire({
+                        title: 'Success!',
+                        text: response.data.message,
+                        icon: 'success'
+                    }).then((result) => {
+                        if (result.isConfirmed) {
+                            window.location.href = "energy_exchange.html";
+                        }
+                    })
+                } else {
+                    Swal.fire({
+                        title: 'Error!',
+                        text: response.data.message,
+                        icon: 'error'
+                    })
+                }
 
 
-
+            })
+            .catch(function(error) {
+                console.log(error);
+                Swal.fire({
+                    title: 'Error!',
+                    text: error.message,
+                    icon: 'error'
+                })
+            });
+    })
 
     function createAffiliate(data) {
 
