@@ -369,7 +369,7 @@
 
             function getAffiliates() {
 
-                axios.get(`https://sparknigeria.herokuapp.com/api/affliates`)
+                axios.get(`https://api.sparknigeria.isparkng.com/api/affliates`)
                     .then(function(response) {
                         if (response.data.status) {
                             let affiliates = response.data.data
@@ -402,7 +402,7 @@
                 // for (let i of data.entries()) {
                 //     console.log(i[0] + '  =>  ' + i[1])
                 // }
-                axios.post('https://sparknigeria.herokuapp.com/api/salesearnings/', data)
+                axios.post('https://api.sparknigeria.isparkng.com/api/salesearnings/', data)
                     .then(function(response) {
                         if (response.data.status) {
                             Swal.fire({

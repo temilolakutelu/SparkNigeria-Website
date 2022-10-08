@@ -295,7 +295,7 @@
         e.preventDefault()
         var data = new FormData();
         data.append('emailaddress', $('input[name="affiliateforgotemail"]').val())
-        axios.post('https://sparknigeria.herokuapp.com/api/affliaterecoverymail/', data)
+        axios.post('https://api.sparknigeria.isparkng.com/api/affliaterecoverymail/', data)
             .then(function(response) {
                 if (response.data.status) {
                     Swal.fire({
@@ -336,7 +336,7 @@
         e.preventDefault()
         var data = new FormData();
         data.append('emailaddress', $('input[name="sponsorforgotemail"]').val())
-        axios.post('https://sparknigeria.herokuapp.com/api/businessinvestorrecoverymail/', data)
+        axios.post('https://api.sparknigeria.isparkng.com/api/businessinvestorrecoverymail/', data)
             .then(function(response) {
                 if (response.data.status) {
                     Swal.fire({
@@ -370,7 +370,7 @@
 
     function createAffiliate(data) {
 
-        axios.post('https://sparknigeria.herokuapp.com/api/registeraffliate/', data)
+        axios.post('https://api.sparknigeria.isparkng.com/api/registeraffliate/', data)
             .then(function(response) {
                 console.log(response);
                 if (response.data.status) {
@@ -409,7 +409,7 @@
         // for (let i of data.entries()) {
         //     console.log(i[0] + '  =>  ' + i[1])
         // }
-        axios.post('https://sparknigeria.herokuapp.com/api/registerbusiness/', data)
+        axios.post('https://api.sparknigeria.isparkng.com/api/registerbusiness/', data)
             .then(function(response) {
                 console.log(response);
                 if (response.data.status) {
@@ -448,7 +448,7 @@
         // for (let i of data.entries()) {
         //     console.log(i[0] + '  =>  ' + i[1])
         // }
-        let url = type == 'affiliate' ? 'https://sparknigeria.herokuapp.com/api/affliatelogin/' : 'https://sparknigeria.herokuapp.com/api/sponsorlogin/'
+        let url = type == 'affiliate' ? 'https://api.sparknigeria.isparkng.com/api/affliatelogin/' : 'https://api.sparknigeria.isparkng.com/api/sponsorlogin/'
         axios.post(url, data)
             .then(function(response) {
                 console.log(response.data);

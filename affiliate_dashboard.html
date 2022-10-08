@@ -168,7 +168,7 @@
                         'Authorization': 'Bearer ' + token
                     }
                 }
-                axios.get(`https://sparknigeria.herokuapp.com/api/dashboard?affliateID=${affiliate.id}`, config)
+                axios.get(`https://api.sparknigeria.isparkng.com/api/dashboard?affliateID=${affiliate.id}`, config)
                     .then(function(response) {
                         console.log(response);
                         if (response.data.status) {
