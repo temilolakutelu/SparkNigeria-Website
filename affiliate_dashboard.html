@@ -159,7 +159,8 @@
             getAffiliate();
 
             $('#logout').click(e => {
-                window.location.href('/index.html')
+                localStorage.clear();
+                window.location.replace("/index.html");
             })
 
             function getAffiliate() {
