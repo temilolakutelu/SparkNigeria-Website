@@ -99,7 +99,7 @@ $(document).ready(function() {
                 if (response.data.status) {
                     Swal.fire({
                         title: 'Success!',
-                        text: response.data.message + 'proceed to login',
+                        text: response.data.message + '. Proceed to login',
                         icon: 'success'
                     }).then((result) => {
                         if (result.isConfirmed) {
